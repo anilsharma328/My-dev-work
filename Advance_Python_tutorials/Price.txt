@@ -1,0 +1,22 @@
+#########################################################################################
+"""
+Author  : Anil
+Version : 0.1
+Date    : 10/15/2022
+Program Desc :  Python script to display EOD price for a security on the basis of
+                CUSIP identifier """
+#########################################################################################
+filename = input("Enter name of input file,for example Security_Price.csv : ") ## For Example: Security_Price.csv
+SecurityPriceFeed = open(filename,'r')  ##  Feed name
+CusipPrice={}
+Cusip=None
+###  Feed file can be a large file, so Readaing one line at a time to avoid any memory issue
+for line in SecurityPriceFeed:
+    if  len(line)==9 and line.isnumeric()== False :
+        CusipPrice[line.strip()]=None
+        Cusip=line.strip()
+    else:
+        CusipPrice[Cusip] = line.strip()
+print(f"Cusip and EOD Price are { CusipPrice}")
+# Closing files
+SecurityPriceFeed.close()

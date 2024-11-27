@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+</head>
+
+<body>
+     <link rel="stylesheet" href="{%static "css/static.css" %}">
+{% if registrations %}
+<h1 align="center"> List of users registered are: </h1>
+<table border=2 align="center">
+      {%  for user in  registrations %}
+        <tr>
+              <td> {{user.name}}</td>
+              <td>{{user.email_id}}</td>
+              <td>{{user.phone_number}}</td>
+        </tr>
+      {%endfor%}
+</table>
+{%else%}
+<p>No Users registered</p>
+{%endif%}
+</body>
+</html>

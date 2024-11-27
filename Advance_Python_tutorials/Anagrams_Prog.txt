@@ -1,0 +1,28 @@
+#########################################################################################
+"""
+Author  : Anil
+Version : 0.1
+Date    : 10/15/2022
+Program Desc :  Python script accepts to outputs the groups of words that are anagrams of
+                each other. For example, “apt”, “tap” and “pat” are anagrams of each other.
+Sample Input and Output :
+                Provide user Input as:  = apt tap pat eat tea tan ate nat bat
+                Output:     [['apt', 'tap', 'pat'], ['eat', 'tea', 'ate'], ['tan', 'nat'], ['bat']]
+"""
+#########################################################################################
+from collections import defaultdict
+
+class Anagrams:
+    def anagramsGroup(self, input_str: list[str]):
+        lookup = defaultdict(list)
+        for s in input_str:
+            key = "".join(sorted(list(s)))
+            lookup[key].append(s)
+            #### Appended anagrams as value w.r.t. a key
+        return [l for l in lookup.values()]
+
+input_string = input('Enter text separated by space,for eg  apt tap pat eat tea tan ate nat bat  : ')
+user_list = input_string.split()
+### Created an object of Anagrams class. Will use this obj to invoke anagramsGroup method.
+Anagrams_Obj = Anagrams()
+print(Anagrams_Obj.anagramsGroup(user_list))
